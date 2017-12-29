@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TimeFrequencyMeasurementSystem.Data;
 using TimeFrequencyMeasurementSystem.Structs;
 
 namespace TimeFrequencyMeasurementSystem.Forms.Wizard
@@ -97,7 +98,26 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
         public WindowWizard()
         {
             InitializeComponent();
-            controlOverview = new ControlOverview();
+            uint bias = 0xffffffff;
+            if (MeasurementData.LstFrequencyCount.Count > 0)
+                bias = bias | 0x01;
+            if (MeasurementData.LstBootFeature.Count > 0)
+                bias = bias | 0x02;
+            if (MeasurementData.LstPhaseNoise.Count > 0)
+                bias = bias | 0x04;
+            if (MeasurementData.LstShortTermStability.Count > 0)
+                bias = bias | 0x08;
+            if (MeasurementData.LstFrequencyAccuracy.Count > 0)
+                bias = bias | 0x10;
+            if (MeasurementData.LstFrequencyReproducibility.Count > 0)
+                bias = bias | 0x20;
+            if (MeasurementData.LstDriftRateParam.Count > 0)
+                bias = bias | 0x40;
+            if (MeasurementData.LstBurnInRateParam.Count > 0)
+                bias = bias | 0x80;
+            if (MeasurementData.LstInterval.Count > 0)
+                bias = bias | 0x100;
+            controlOverview = new ControlOverview(bias);
             controlFrequencyCount = new ControlFrequencyCount();
             controlBootFeature = new ControlBootFeature();
             controlPhaseNoise = new ControlPhaseNoise();
@@ -139,7 +159,7 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             do
             {
                 Index--;
-            } while (lstControls[index].IsActive);
+            } while (!lstControls[index].IsActive && Index > 0);
 
             lstControls[index].Visibility = Visibility.Visible;
         }
@@ -147,15 +167,23 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
             lstControls[index].Visibility = Visibility.Hidden;
-            if(index == 0)
+            if (index == 0)
             {
-
+                controlFrequencyCount.IsActive = controlOverview.BFrequencyCount;
+                controlBootFeature.IsActive = controlOverview.BBootFeature;
+                controlPhaseNoise.IsActive = controlOverview.BPhaseNoise;
+                controlShortTermStability.IsActive = controlOverview.BShortTermStability;
+                controlFrequencyAccuracy.IsActive = controlOverview.BFrequencyAccuracy;
+                controlFrequencyReproducibility.IsActive = controlOverview.BFrequencyReproducibility;
+                controlDriftRate.IsActive = controlOverview.BDriftRate;
+                controlBurnInRate.IsActive = controlOverview.BBurnInRate;
+                controlInterval.IsActive = controlOverview.BInterval;
             }
 
             do
             {
                 Index++;
-            } while (lstControls[index].IsActive == true || Index >= lstControls.Count);
+            } while (lstControls[index].IsActive == false && Index < lstControls.Count);
 
             if (Index >= lstControls.Count)
                 this.Close();

@@ -25,7 +25,6 @@ namespace TimeFrequencyMeasurementSystem
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public ObservableCollection<MeasurementBase> LstMeasurements { get; set; }
         public ObservableCollection<MeasurementFrequencyCount> LstFrequencyCount
         {
             get
@@ -141,7 +140,6 @@ namespace TimeFrequencyMeasurementSystem
         public MainWindow()
         {
             InitializeComponent();
-            LstMeasurements = new ObservableCollection<MeasurementBase>();
             LstFrequencyCount = new ObservableCollection<MeasurementFrequencyCount>();
             LstBootFeature = new ObservableCollection<MeasurementBootFeature>();
             LstPhaseNoise = new ObservableCollection<MeasurementPhaseNoise>();
@@ -167,7 +165,6 @@ namespace TimeFrequencyMeasurementSystem
             if (windowFC.ShowDialog() == true)
             {
                 MeasurementBase measurement = new MeasurementFrequencyCount(windowFC.Now, windowFC.Frequency);
-                LstMeasurements.Add(measurement);
                 LstFrequencyCount.Add((MeasurementFrequencyCount)measurement);
             }
         }
@@ -178,7 +175,6 @@ namespace TimeFrequencyMeasurementSystem
             if (windowBF.ShowDialog() == true)
             {
                 MeasurementBase measurement = new MeasurementBootFeature(windowBF.Now, windowBF.FrequencyBoot, windowBF.FrequencyStable, windowBF.FrequencyStandard.ToString());
-                LstMeasurements.Add(measurement);
                 LstBootFeature.Add((MeasurementBootFeature)measurement);
             }
         }
@@ -189,7 +185,6 @@ namespace TimeFrequencyMeasurementSystem
             if (windowPN.ShowDialog() == true)
             {
                 MeasurementBase measurement = new MeasurementPhaseNoise(windowPN.Now, windowPN.FrequencyOffset, windowPN.Noise);
-                LstMeasurements.Add(measurement);
                 LstPhaseNoise.Add((MeasurementPhaseNoise)measurement);
             }
         }
@@ -200,7 +195,6 @@ namespace TimeFrequencyMeasurementSystem
             if (windowSTS.ShowDialog() == true)
             {
                 MeasurementBase measurement = new MeasurementShortTermStability(windowSTS.Now, windowSTS.Tau, windowSTS.Sigma);
-                LstMeasurements.Add(measurement);
                 LstShortTermStability.Add((MeasurementShortTermStability)measurement);
             }
         }
@@ -211,7 +205,6 @@ namespace TimeFrequencyMeasurementSystem
             if (windowFA.ShowDialog() == true)
             {
                 MeasurementBase measurement = new MeasurementFrequencyAccuracy(windowFA.Now, windowFA.FrequencyStandard.ToString(), windowFA.FrequencyActual);
-                LstMeasurements.Add(measurement);
                 LstFrequencyAccuracy.Add((MeasurementFrequencyAccuracy)measurement);
             }
         }
@@ -222,7 +215,6 @@ namespace TimeFrequencyMeasurementSystem
             if (windowFR.ShowDialog() == true)
             {
                 MeasurementBase measurement = new MeasurementFrequencyReproducibility(windowFR.Now, windowFR.FrequencyI, windowFR.FrequencyII, windowFR.FrequencyStandard.ToString());
-                LstMeasurements.Add(measurement);
                 LstFrequencyReproducibility.Add((MeasurementFrequencyReproducibility)measurement);
             }
         }
@@ -243,7 +235,6 @@ namespace TimeFrequencyMeasurementSystem
             if (windowDR.ShowDialog() == true)
             {
                 MeasurementBase measurement = new MeasurementDriftRateParam(windowDR.Now, windowDR.Days.ToString(), windowDR.Frequency);
-                LstMeasurements.Add(measurement);
                 LstDriftRateParam.Add((MeasurementDriftRateParam)measurement);
             }
         }
@@ -264,7 +255,6 @@ namespace TimeFrequencyMeasurementSystem
             if (windowBIR.ShowDialog() == true)
             {
                 MeasurementBase measurement = new MeasurementBurnInRateParam(windowBIR.Now, windowBIR.Count.ToString(), windowBIR.Frequency);
-                LstMeasurements.Add(measurement);
                 LstBurnInRateParam.Add((MeasurementBurnInRateParam)measurement);
             }
         }
@@ -275,14 +265,13 @@ namespace TimeFrequencyMeasurementSystem
             if (windowI.ShowDialog() == true)
             {
                 MeasurementBase measurement = new MeasurementInterval(windowI.Now, windowI.Average, windowI.StandardDeviation);
-                LstMeasurements.Add(measurement);
                 LstInterval.Add((MeasurementInterval)measurement);
             }
         }
 
         private void BtnExport_Click(object sender, RoutedEventArgs e)
         {
-            WindowWizard wizard = new WindowWizard(LstMeasurements);
+            WindowWizard wizard = new WindowWizard();
             wizard.ShowDialog();
         }
 
@@ -292,7 +281,6 @@ namespace TimeFrequencyMeasurementSystem
             {
                 MeasurementFrequencyCount mfc = LstFrequencyCount[dataGridFrequencyCount.SelectedIndex];
                 LstFrequencyCount.Remove(mfc);
-                LstMeasurements.Remove(mfc);
             }
         }
 
@@ -301,9 +289,7 @@ namespace TimeFrequencyMeasurementSystem
             if (dataGridBootFeature.SelectedIndex != -1)
             {
                 MeasurementBootFeature mbf = LstBootFeature[dataGridBootFeature.SelectedIndex];
-                LstBootFeature.Remove(mbf);
-                LstMeasurements.Remove(mbf);
-            }
+                LstBootFeature.Remove(mbf);            }
         }
 
         private void ItmPhaseNoiseRemove_Click(object sender, RoutedEventArgs e)
@@ -312,7 +298,6 @@ namespace TimeFrequencyMeasurementSystem
             {
                 MeasurementPhaseNoise mpn = LstPhaseNoise[dataGridPhaseNoise.SelectedIndex];
                 LstPhaseNoise.Remove(mpn);
-                LstMeasurements.Remove(mpn);
             }
         }
 
@@ -322,7 +307,6 @@ namespace TimeFrequencyMeasurementSystem
             {
                 MeasurementShortTermStability msts = LstShortTermStability[dataGridShortTermStability.SelectedIndex];
                 LstShortTermStability.Remove(msts);
-                LstMeasurements.Remove(msts);
             }
         }
 
@@ -332,7 +316,6 @@ namespace TimeFrequencyMeasurementSystem
             {
                 MeasurementFrequencyAccuracy mfa = LstFrequencyAccuracy[dataGridFrequencyAccuracy.SelectedIndex];
                 LstFrequencyAccuracy.Remove(mfa);
-                LstMeasurements.Remove(mfa);
             }
         }
 
@@ -342,7 +325,6 @@ namespace TimeFrequencyMeasurementSystem
             {
                 MeasurementFrequencyReproducibility mfr = LstFrequencyReproducibility[dataGridFrequencyReproducibility.SelectedIndex];
                 LstFrequencyReproducibility.Remove(mfr);
-                LstMeasurements.Remove(mfr);
             }
         }
 
@@ -352,7 +334,6 @@ namespace TimeFrequencyMeasurementSystem
             {
                 MeasurementDriftRateParam mdr = LstDriftRateParam[dataGridDriftRate.SelectedIndex];
                 LstDriftRateParam.Remove(mdr);
-                LstMeasurements.Remove(mdr);
             }
         }
 
@@ -375,7 +356,6 @@ namespace TimeFrequencyMeasurementSystem
             {
                 MeasurementBurnInRateParam mbir = LstBurnInRateParam[dataGridBurnInRate.SelectedIndex];
                 LstBurnInRateParam.Remove(mbir);
-                LstMeasurements.Remove(mbir);
             }
         }
 
@@ -398,7 +378,6 @@ namespace TimeFrequencyMeasurementSystem
             {
                 MeasurementInterval mi = LstInterval[dataGridInterval.SelectedIndex];
                 LstInterval.Remove(mi);
-                LstMeasurements.Remove(mi);
             }
         }
     }
