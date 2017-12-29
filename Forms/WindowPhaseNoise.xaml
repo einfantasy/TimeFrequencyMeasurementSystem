@@ -1,0 +1,50 @@
+﻿<Window x:Class="TimeFrequencyMeasurementSystem.Forms.WindowPhaseNoise"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeFrequencyMeasurementSystem.Forms"
+        mc:Ignorable="d"
+        Title="相位噪声" Height="200" Width="300" ResizeMode="NoResize" Loaded="Window_Loaded"
+        FocusManager.FocusedElement="{Binding ElementName=TxtFrequencyOffset}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="测试时间" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20,0"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Text="{Binding Now}" IsReadOnly="True" Focusable="False"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Name="LblFrequencyOffset" Grid.Column="0" Content="频率偏移" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20,0"/>
+            <TextBox Name="TxtFrequencyOffset" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Text="{Binding FrequencyOffset}"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Name="LblNoise" Grid.Column="0" Content="噪声" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20,0"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Text="{Binding Noise}" />
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="BtnOk" Content="确定" Width="80" Height="25" Click="BtnOk_Click" />
+            <Button Grid.Column="1" Name="BtnCancel" Content="取消" Width="80" Height="25" Click="BtnCancel_Click" />
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,53 @@
+﻿<Window x:Class="TimeFrequencyMeasurementSystem.Forms.WindowBurnInRate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:nb="clr-namespace:NumericUpDownControl;assembly=NumericUpDownControl"
+        xmlns:local="clr-namespace:TimeFrequencyMeasurementSystem.Forms"
+        mc:Ignorable="d"
+        Title="日老化率" Height="200" Width="300" ResizeMode="NoResize" Loaded="Window_Loaded"
+        FocusManager.FocusedElement="{Binding ElementName=TxtFrequency}">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="测试时间" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20,0"/>
+                <TextBox Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Text="{Binding Now}" IsReadOnly="True" Focusable="False" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="测试次数" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20,0"/>
+                <nb:NumericBox Grid.Column="1" Value="{Binding Count,Mode=TwoWay}" Minimum="1" Maximum="15" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" />
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Name="LblFrequency" Grid.Column="0" Content="输出频率" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20,0"/>
+                <TextBox Name="TxtFrequency" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Text="{Binding Frequency}"/>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Name="BtnOk" Content="确定" Width="80" Height="25" Click="BtnOk_Click"/>
+                <Button Grid.Column="1" Name="BtnCancel" Content="取消" Width="80" Height="25" Click="BtnCancel_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

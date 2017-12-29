@@ -1,0 +1,25 @@
+﻿<Window x:Class="TimeFrequencyMeasurementSystem.Forms.Wizard.WindowWizard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeFrequencyMeasurementSystem.Forms.Wizard"
+        mc:Ignorable="d"
+        Title="生成报告" Height="600" Width="800" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid Name="Content"  Grid.Row="0" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="BtnPrev" Content="上一步" Width="80" Height="25" IsEnabled="{Binding BPrevEnable, Mode=TwoWay}" Click="BtnPrev_Click"/>
+            <Button Grid.Column="1" Name="BtnNext" Content="下一步" Width="80" Height="25" IsEnabled="{Binding BNextEnable, Mode=TwoWay}" Click="BtnNext_Click"/>
+        </Grid>
+    </Grid>
+</Window>
+  
