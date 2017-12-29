@@ -30,7 +30,7 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             }
         }
 
-        private List<UserControl> lstControls = new List<UserControl>();
+        private List<ControlBase> lstControls = new List<ControlBase>();
 
         private int index = 0;
         public int Index
@@ -94,23 +94,18 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
         ControlInterval controlInterval;
         ControlReportParam controlReportParam;
 
-        ObservableCollection<MeasurementBase> lstMeasurements;
-
-        public WindowWizard(ObservableCollection<MeasurementBase> lstMeasurements)
+        public WindowWizard()
         {
             InitializeComponent();
-            this.lstMeasurements = lstMeasurements;
-
-
             controlOverview = new ControlOverview();
             controlFrequencyCount = new ControlFrequencyCount();
             controlBootFeature = new ControlBootFeature();
-            controlPhaseNoise = new Wizard.ControlPhaseNoise();
-            controlShortTermStability = new Wizard.ControlShortTermStability();
-            controlFrequencyAccuracy = new Wizard.ControlFrequencyAccuracy();
+            controlPhaseNoise = new ControlPhaseNoise();
+            controlShortTermStability = new ControlShortTermStability();
+            controlFrequencyAccuracy = new ControlFrequencyAccuracy();
             controlFrequencyReproducibility = new ControlFrequencyReproducibility();
-            controlDriftRate = new Wizard.ControlDriftRate();
-            controlBurnInRate = new Wizard.ControlBurnInRate();
+            controlDriftRate = new ControlDriftRate();
+            controlBurnInRate = new ControlBurnInRate();
             controlInterval = new ControlInterval();
             controlReportParam = new ControlReportParam();
         }
@@ -141,14 +136,27 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
         private void BtnPrev_Click(object sender, RoutedEventArgs e)
         {
             lstControls[index].Visibility = Visibility.Hidden;
-            Index--;
+            do
+            {
+                Index--;
+            } while (lstControls[index].IsActive);
+
             lstControls[index].Visibility = Visibility.Visible;
         }
 
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
             lstControls[index].Visibility = Visibility.Hidden;
-            Index++;
+            if(index == 0)
+            {
+
+            }
+
+            do
+            {
+                Index++;
+            } while (lstControls[index].IsActive == true || Index >= lstControls.Count);
+
             if (Index >= lstControls.Count)
                 this.Close();
             else

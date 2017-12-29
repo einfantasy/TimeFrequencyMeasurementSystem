@@ -59,6 +59,7 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             LstDevices = new ObservableCollection<Device>();
             LstDocuments = new ObservableCollection<Document>();
             this.DataContext = this;
+            base.IsActive = true;
         }
 
         private void ItmDeviceRemove_Click(object sender, RoutedEventArgs e)

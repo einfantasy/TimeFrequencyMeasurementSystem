@@ -286,7 +286,7 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             }
         }
 
-        public ControlOverview(int enabledBias = 0xff)
+        public ControlOverview(uint enabledBias = 0xffffffff)
         {
             InitializeComponent();
             if ((enabledBias & 0x01) == 0x01)
@@ -325,7 +325,9 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
                 this.BIntervalEnabled = true;
             else
                 this.BIntervalEnabled = false;
+
             this.DataContext = this;
+            base.IsActive = true;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
