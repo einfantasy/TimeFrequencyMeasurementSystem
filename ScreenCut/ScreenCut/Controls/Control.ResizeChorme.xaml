@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ScreenCut.Controls"
+                    >
+
+    <Style TargetType="local:ResizeChorme">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ResizeChorme">
+                    <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                        <Ellipse IsHitTestVisible="False">
+                            <Shape.Fill>
+                                <RadialGradientBrush Center="0.2, 0.2" GradientOrigin="0.2, 0.2" RadiusX="0.8" RadiusY="0.8">
+                                    <GradientStop Color="LightBlue" Offset="0"/>
+                                    <GradientStop Color="Blue" Offset="0.9"/>
+                                </RadialGradientBrush>
+                            </Shape.Fill>
+                        </Ellipse>
+                        <local:ResizeThumb x:Name="resizeThumb"/> 
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+</ResourceDictionary>

@@ -1,0 +1,24 @@
+﻿<Window x:Class="ScreenCut.MaskWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:screenCut="clr-namespace:ScreenCut"
+        WindowState="Maximized" WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        Loaded="MainWindow_Loaded">
+    <!--<Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/General.xaml"/>
+                <ResourceDictionary Source="/Controls/Control.ResizeChorme.xaml"/>
+                <ResourceDictionary Source="/Controls/Control.MoveChorme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>-->
+    <Grid>
+        <screenCut:MaskCanvas x:Name="maskCanvas">
+            <!--注意Canvas.Left和Canvas.Top,不设置时为NaN运算不会有结果也不会报错-->
+            <!--不能将背景色设为透明，这样不会触发移动-->
+            <Border x:Name="border" Background="White" Opacity="0.01" Width="0" Height="0" Canvas.Left="0" Canvas.Top="0">
+            </Border>
+        </screenCut:MaskCanvas>
+    </Grid>
+</Window>

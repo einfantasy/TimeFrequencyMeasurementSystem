@@ -4,17 +4,25 @@
 winexe
 C#
 .cs
-G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\
+E:\时频\代码\TimeFrequencyMeasurementSystem\obj\Debug\
 TimeFrequencyMeasurementSystem
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\App.xaml
-22-57935573
+31-1856525281
 11462620762
-451750270295
-14-1838770379
-Forms\WindowBootFeature.xaml;Forms\WindowBurnInRate.xaml;Forms\WindowDriftRate.xaml;Forms\WindowFrequencyAccuracy.xaml;Forms\WindowFrequencyCount.xaml;Forms\WindowFrequencyReproducibility.xaml;Forms\WindowInterval.xaml;Forms\WindowPhaseNoise.xaml;Forms\WindowShortTermStability.xaml;Forms\Wizard\ControlBootFeature.xaml;Forms\Wizard\ControlBurnInRate.xaml;Forms\Wizard\ControlDriftRate.xaml;Forms\Wizard\ControlFrequencyAccuracy.xaml;Forms\Wizard\ControlFrequencyCount.xaml;Forms\Wizard\ControlFrequencyReproducibility.xaml;Forms\Wizard\ControlInterval.xaml;Forms\Wizard\ControlOverview.xaml;Forms\Wizard\ControlReportParam.xaml;Forms\Wizard\ControlPhaseNoise.xaml;Forms\Wizard\ControlShortTermStability.xaml;Forms\Wizard\WindowWizard.xaml;MainWindow.xaml;
+541961622386
+15-1679813030
+=======
+E:\时频\代码\TimeFrequencyMeasurementSystem\App.xaml
+31-1856525281
+11462620762
+541961622386
+15-1632372859
+>>>>>>> a0e942a9e7f07ef9434eae04820d96f024c4abac
+Forms\SubForm\BootFeatureForm.xaml;Forms\SubForm\BurnInRateForm.xaml;Forms\SubForm\DriftRateForm.xaml;Forms\SubForm\FrequencyAccuracyFrom.xaml;Forms\SubForm\FrequencyCountForm.xaml;Forms\SubForm\FrequencyReproducibilityForm.xaml;Forms\SubForm\IntervalForm.xaml;Forms\SubForm\ParseNoiseForm.xaml;Forms\SubForm\ShortTermStabilityFrom.xaml;Forms\WindowBootFeature.xaml;Forms\WindowBurnInRate.xaml;Forms\WindowDriftRate.xaml;Forms\WindowFrequencyAccuracy.xaml;Forms\WindowFrequencyCount.xaml;Forms\WindowFrequencyReproducibility.xaml;Forms\WindowInterval.xaml;Forms\WindowPhaseNoise.xaml;Forms\WindowShortTermStability.xaml;Forms\Wizard\ControlBootFeature.xaml;Forms\Wizard\ControlBurnInRate.xaml;Forms\Wizard\ControlDriftRate.xaml;Forms\Wizard\ControlFrequencyAccuracy.xaml;Forms\Wizard\ControlFrequencyCount.xaml;Forms\Wizard\ControlFrequencyReproducibility.xaml;Forms\Wizard\ControlInterval.xaml;Forms\Wizard\ControlOverview.xaml;Forms\Wizard\ControlReportParam.xaml;Forms\Wizard\ControlPhaseNoise.xaml;Forms\Wizard\ControlShortTermStability.xaml;Forms\Wizard\WindowWizard.xaml;MainWindow.xaml;
 
-False
+True
 
