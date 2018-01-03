@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\
+E:\时频\代码\TimeFrequencyMeasurementSystem\obj\Debug\
 TimeFrequencyMeasurementSystem
 none
 false
 DEBUG;TRACE
-G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\App.xaml
+E:\时频\代码\TimeFrequencyMeasurementSystem\App.xaml
 22-57935573
 11462620762
 451750270295
-14-1838770379
+15-1632372859
 Forms\WindowBootFeature.xaml;Forms\WindowBurnInRate.xaml;Forms\WindowDriftRate.xaml;Forms\WindowFrequencyAccuracy.xaml;Forms\WindowFrequencyCount.xaml;Forms\WindowFrequencyReproducibility.xaml;Forms\WindowInterval.xaml;Forms\WindowPhaseNoise.xaml;Forms\WindowShortTermStability.xaml;Forms\Wizard\ControlBootFeature.xaml;Forms\Wizard\ControlBurnInRate.xaml;Forms\Wizard\ControlDriftRate.xaml;Forms\Wizard\ControlFrequencyAccuracy.xaml;Forms\Wizard\ControlFrequencyCount.xaml;Forms\Wizard\ControlFrequencyReproducibility.xaml;Forms\Wizard\ControlInterval.xaml;Forms\Wizard\ControlOverview.xaml;Forms\Wizard\ControlReportParam.xaml;Forms\Wizard\ControlPhaseNoise.xaml;Forms\Wizard\ControlShortTermStability.xaml;Forms\Wizard\WindowWizard.xaml;MainWindow.xaml;
 
-False
+True
 

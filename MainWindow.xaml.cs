@@ -403,30 +403,76 @@ namespace TimeFrequencyMeasurementSystem
 
         private void BtnPrintScreen1_Click(object sender, RoutedEventArgs e)
         {
-            //创建图象，保存将来截取的图象
-            Bitmap image = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            Graphics imgGraphics = Graphics.FromImage(image);
-            //设置截屏区域
-            imgGraphics.CopyFromScreen(0, 0, 0, 0, new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
-            //ThreadPool.QueueUserWorkItem((s) =>
-            //{
-                MeasurementData.ImgPhaseNoise = Common.BitmapToBitmapImage(image);
-            //});
-            Changed("ImgPhaseNoise");
+            ////创建图象，保存将来截取的图象
+            //Bitmap image = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            //Graphics imgGraphics = Graphics.FromImage(image);
+            ////设置截屏区域
+            //imgGraphics.CopyFromScreen(0, 0, 0, 0, new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
+            ////ThreadPool.QueueUserWorkItem((s) =>
+            ////{
+            //    MeasurementData.ImgPhaseNoise = Common.BitmapToBitmapImage(image);
+            ////});
+            //Changed("ImgPhaseNoise");
+
+            WindowState state = this.WindowState;
+            this.WindowState = WindowState.Minimized;
+            try
+            {
+                
+                ScreenCut.MaskWindow scwd = new ScreenCut.MaskWindow();
+                if (scwd.ShowDialog() == true)
+                {
+                    MeasurementData.ImgPhaseNoise = Common.BitmapToBitmapImage(scwd.BMP);
+                    Changed("ImgPhaseNoise");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.WindowState = state;
+            }
         }
 
         private void BtnPrintScreen2_Click(object sender, RoutedEventArgs e)
         {
-            //创建图象，保存将来截取的图象
-            Bitmap image = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            Graphics imgGraphics = Graphics.FromImage(image);
-            //设置截屏区域
-            imgGraphics.CopyFromScreen(0, 0, 0, 0, new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
-            //ThreadPool.QueueUserWorkItem((s) =>
-            //{
-                MeasurementData.ImgShortTermStability = Common.BitmapToBitmapImage(image);
-            //});
-            Changed("ImgShortTermStability");
+            ////创建图象，保存将来截取的图象
+            //Bitmap image = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            //Graphics imgGraphics = Graphics.FromImage(image);
+            ////设置截屏区域
+            //imgGraphics.CopyFromScreen(0, 0, 0, 0, new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
+            ////ThreadPool.QueueUserWorkItem((s) =>
+            ////{
+            //    MeasurementData.ImgShortTermStability = Common.BitmapToBitmapImage(image);
+            ////});
+            //Changed("ImgShortTermStability");
+
+            WindowState state = this.WindowState;
+            this.WindowState = WindowState.Minimized;
+            try
+            {
+                
+                ScreenCut.MaskWindow scwd = new ScreenCut.MaskWindow();
+                if (scwd.ShowDialog() == true)
+                {
+                    MeasurementData.ImgShortTermStability = Common.BitmapToBitmapImage(scwd.BMP);
+                    Changed("ImgShortTermStability");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.WindowState = state;
+            }
         }
     }
 }

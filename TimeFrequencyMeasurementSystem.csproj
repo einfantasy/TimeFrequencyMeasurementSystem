@@ -260,7 +260,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="ScreenCut\ScreenCut\ScreenCut.csproj">
+      <Project>{5606128f-fd60-4eba-93fa-21435a84a532}</Project>
+      <Name>ScreenCut</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Dll\NumericUpDownControl.dll" />
   </ItemGroup>
