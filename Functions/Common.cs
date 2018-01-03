@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Media.Imaging;
 
 namespace TimeFrequencyMeasurementSystem.Functions
 {
@@ -45,6 +48,26 @@ namespace TimeFrequencyMeasurementSystem.Functions
                 return false;
             else
                 return true;
+        }
+
+        public static BitmapImage BitmapToBitmapImage(Bitmap bitmap)
+        {
+            Bitmap bitmapSource = new Bitmap(bitmap.Width, bitmap.Height);
+            int i, j;
+            for (i = 0; i < bitmap.Width; i++)
+                for (j = 0; j < bitmap.Height; j++)
+                {
+                    Color pixelColor = bitmap.GetPixel(i, j);
+                    Color newColor = Color.FromArgb(pixelColor.R, pixelColor.G, pixelColor.B);
+                    bitmapSource.SetPixel(i, j, newColor);
+                }
+            MemoryStream ms = new MemoryStream();
+            bitmapSource.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = new MemoryStream(ms.ToArray());
+            bitmapImage.EndInit();
+            return bitmapImage;
         }
     }
 }

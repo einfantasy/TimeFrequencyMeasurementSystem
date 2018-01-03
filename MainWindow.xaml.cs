@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -16,6 +19,7 @@ using System.Windows.Shapes;
 using TimeFrequencyMeasurementSystem.Data;
 using TimeFrequencyMeasurementSystem.Forms;
 using TimeFrequencyMeasurementSystem.Forms.Wizard;
+using TimeFrequencyMeasurementSystem.Functions;
 using TimeFrequencyMeasurementSystem.Structs;
 
 namespace TimeFrequencyMeasurementSystem
@@ -131,6 +135,22 @@ namespace TimeFrequencyMeasurementSystem
             {
                 MeasurementData.LstInterval = value;
                 Changed("LstInterval");
+            }
+        }
+
+        public BitmapImage ImgPhaseNoise
+        {
+            get
+            {
+                return MeasurementData.ImgPhaseNoise;
+            }
+        }
+
+        public BitmapImage ImgShortTermStability
+        {
+            get
+            {
+                return MeasurementData.ImgShortTermStability;
             }
         }
 
@@ -342,11 +362,11 @@ namespace TimeFrequencyMeasurementSystem
             try
             {
                 MeasurementDriftRate mdr = new MeasurementDriftRate(LstDriftRateParam.ToList());
-                MessageBox.Show(string.Format("漂移率：{0}", mdr.DriftRate));
+                System.Windows.MessageBox.Show(string.Format("漂移率：{0}", mdr.DriftRate));
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
 
@@ -364,11 +384,11 @@ namespace TimeFrequencyMeasurementSystem
             try
             {
                 MeasurementBurnInRate mbir = new MeasurementBurnInRate(LstBurnInRateParam.ToList());
-                MessageBox.Show(string.Format("日老化率：{0}", mbir.BurnInRate));
+                System.Windows.MessageBox.Show(string.Format("日老化率：{0}", mbir.BurnInRate));
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
 
@@ -379,6 +399,34 @@ namespace TimeFrequencyMeasurementSystem
                 MeasurementInterval mi = LstInterval[dataGridInterval.SelectedIndex];
                 LstInterval.Remove(mi);
             }
+        }
+
+        private void BtnPrintScreen1_Click(object sender, RoutedEventArgs e)
+        {
+            //创建图象，保存将来截取的图象
+            Bitmap image = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            Graphics imgGraphics = Graphics.FromImage(image);
+            //设置截屏区域
+            imgGraphics.CopyFromScreen(0, 0, 0, 0, new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
+            //ThreadPool.QueueUserWorkItem((s) =>
+            //{
+                MeasurementData.ImgPhaseNoise = Common.BitmapToBitmapImage(image);
+            //});
+            Changed("ImgPhaseNoise");
+        }
+
+        private void BtnPrintScreen2_Click(object sender, RoutedEventArgs e)
+        {
+            //创建图象，保存将来截取的图象
+            Bitmap image = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            Graphics imgGraphics = Graphics.FromImage(image);
+            //设置截屏区域
+            imgGraphics.CopyFromScreen(0, 0, 0, 0, new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
+            //ThreadPool.QueueUserWorkItem((s) =>
+            //{
+                MeasurementData.ImgShortTermStability = Common.BitmapToBitmapImage(image);
+            //});
+            Changed("ImgShortTermStability");
         }
     }
 }

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeFrequencyMeasurementSystem.Data;
+using TimeFrequencyMeasurementSystem.Functions;
 using TimeFrequencyMeasurementSystem.Structs;
 
 namespace TimeFrequencyMeasurementSystem.Forms.Wizard
@@ -36,46 +37,71 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             {
                 return MeasurementData.LstFrequencyCount;
             }
-            set
-            {
-                MeasurementData.LstFrequencyCount = value;
-                Changed("LstFrequencyCount");
-            }
         }
 
-        private MeasurementFrequencyCount selectedFrequencyCount;
-        public MeasurementFrequencyCount SelectedFrequencyCount
+        private ObservableCollection<MeasurementFrequencyCount> lstSelectedFrequencyCount;
+        public ObservableCollection<MeasurementFrequencyCount> LstSelectedFrequencyCount
         {
             get
             {
-                return selectedFrequencyCount;
+                return lstSelectedFrequencyCount;
             }
             set
             {
-                selectedFrequencyCount = value;
-                TxtSelectedItem = string.Format("{0}, {1}", selectedFrequencyCount.Now, selectedFrequencyCount.Frequency);
-                Changed("SelectedFrequencyCount");
+                lstSelectedFrequencyCount = value;
+                Changed("LstSelectedFrequencyCount");
             }
         }
 
-        private string txtSelectedItem;
-        public string TxtSelectedItem
+        private MeasurementFrequencyCount selectedAddItem;
+        public MeasurementFrequencyCount SelectedAddItem
         {
             get
             {
-                return txtSelectedItem;
+                return selectedAddItem;
             }
             set
             {
-                txtSelectedItem = value;
-                Changed("TxtSelectedItem");
+                selectedAddItem = value;
+                Changed("SelectedAddItem");
             }
         }
+
+        private MeasurementFrequencyCount selectedRemoveItem;
+        public MeasurementFrequencyCount SelectedRemoveItem
+        {
+            get
+            {
+                return selectedRemoveItem;
+            }
+            set
+            {
+                selectedRemoveItem = value;
+                Changed("SelectedRemoveItem");
+            }
+        }
+
+        public ICommand Add { get; private set; }
+        public ICommand Remove { get; private set; }
 
         public ControlFrequencyCount()
         {
             InitializeComponent();
+            lstSelectedFrequencyCount = new ObservableCollection<MeasurementFrequencyCount>();
             this.DataContext = this;
+            Add = new RelayCommand(AddItem);
+            Remove = new RelayCommand(RemoveItem);
+        }
+
+        private void AddItem(object obj)
+        {
+            if(SelectedAddItem != null && !LstSelectedFrequencyCount.Contains(SelectedAddItem))
+                LstSelectedFrequencyCount.Add(SelectedAddItem);
+        }
+
+        private void RemoveItem(object obj)
+        {
+            LstSelectedFrequencyCount.Remove(SelectedRemoveItem);
         }
     }
 }

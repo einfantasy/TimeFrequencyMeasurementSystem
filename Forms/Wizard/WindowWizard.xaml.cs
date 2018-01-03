@@ -98,7 +98,7 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
         public WindowWizard()
         {
             InitializeComponent();
-            uint bias = 0xffffffff;
+            uint bias = 0;
             if (MeasurementData.LstFrequencyCount.Count > 0)
                 bias = bias | 0x01;
             if (MeasurementData.LstBootFeature.Count > 0)
@@ -159,7 +159,7 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             do
             {
                 Index--;
-            } while (!lstControls[index].IsActive && Index > 0);
+            } while (Index > 0 && !lstControls[index].IsActive);
 
             lstControls[index].Visibility = Visibility.Visible;
         }
@@ -183,7 +183,7 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             do
             {
                 Index++;
-            } while (lstControls[index].IsActive == false && Index < lstControls.Count);
+            } while (Index < lstControls.Count && lstControls[index].IsActive == false);
 
             if (Index >= lstControls.Count)
                 this.Close();

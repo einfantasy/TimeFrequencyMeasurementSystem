@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Media.Imaging;
 using TimeFrequencyMeasurementSystem.Structs;
 
 namespace TimeFrequencyMeasurementSystem.Data
@@ -18,5 +19,7 @@ namespace TimeFrequencyMeasurementSystem.Data
         public static ObservableCollection<MeasurementDriftRateParam> LstDriftRateParam { get; set; }
         public static ObservableCollection<MeasurementBurnInRateParam> LstBurnInRateParam { get; set; }
         public static ObservableCollection<MeasurementInterval> LstInterval { get; set; }
+        public static BitmapImage ImgPhaseNoise { get; set; }
+        public static BitmapImage ImgShortTermStability { get; set; }
     }
 }
