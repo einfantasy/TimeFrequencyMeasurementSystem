@@ -10,7 +10,7 @@
              d:DesignHeight="550" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
@@ -19,8 +19,11 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="选择测量数据" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 50" Height="28"/>
-            <DataGrid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,50,0,0" Height="350" Width="600" 
-                      ItemsSource="{Binding LstFrequencyAccuracy}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedItem}">
+            <DataGrid Name="BaseGrid"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,50,0,0" Height="200" Width="600" 
+                      ItemsSource="{Binding LstFrequencyAccuracy}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedAddItem}">
+                <DataGrid.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Add}" CommandParameter="{Binding ElementName=BaseGrid, Path=SelectedItem}" />
+                </DataGrid.InputBindings>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="记录时间" Width="*" Binding="{Binding Now, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="频率标称值" Width="*" Binding="{Binding FrequencyStandard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
@@ -35,7 +38,18 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="当前选择" HorizontalAlignment="Right" VerticalAlignment="Top" Height="28"/>
-            <TextBox Text="{Binding TxtSelectedItem}" IsReadOnly="True" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="600" Margin="20, 5"/>
+            <DataGrid Name="ChildGrid" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,5,0,0" Height="200" Width="600" 
+                      ItemsSource="{Binding LstSelectedFrequencyAccuracy}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedRemoveItem}">
+                <DataGrid.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Remove}" CommandParameter="{Binding ElementName=ChildGrid, Path=SelectedItem}" />
+                </DataGrid.InputBindings>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="记录时间" Width="*" Binding="{Binding Now, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="频率标称值" Width="*" Binding="{Binding FrequencyStandard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="频率实际值" Width="*" Binding="{Binding FrequencyActual, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="频率准确度" Width="*" Binding="{Binding FrequencyAccuracy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </Wizard:ControlBase>

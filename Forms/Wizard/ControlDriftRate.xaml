@@ -19,7 +19,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="漂移率" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 50" Height="28"/>
-            <Label Grid.Column="1" Content="0.01%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20, 50" Height="28"/>
+            <Label Grid.Column="1" Content="{Binding DriftRate}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20, 50" Height="28"/>
         </Grid>
     </Grid>
 </Wizard:ControlBase>

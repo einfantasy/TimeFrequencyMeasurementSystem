@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeFrequencyMeasurementSystem.Data;
+using TimeFrequencyMeasurementSystem.Functions;
 using TimeFrequencyMeasurementSystem.Structs;
 
 namespace TimeFrequencyMeasurementSystem.Forms.Wizard
@@ -38,39 +39,69 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             }
         }
 
-        private MeasurementFrequencyAccuracy selectedItem;
-        public MeasurementFrequencyAccuracy SelectedItem
+        private ObservableCollection<MeasurementFrequencyAccuracy> lstSelectedFrequencyAccuracy;
+        public ObservableCollection<MeasurementFrequencyAccuracy> LstSelectedFrequencyAccuracy
         {
             get
             {
-                return selectedItem;
+                return lstSelectedFrequencyAccuracy;
             }
             set
             {
-                selectedItem = value;
-                TxtSelectedItem = string.Format("{0}, {1}, {2}, {3}", selectedItem.Now, selectedItem.FrequencyStandard, selectedItem.FrequencyActual, selectedItem.FrequencyAccuracy);
-                Changed("SelectedItem");
+                lstSelectedFrequencyAccuracy = value;
+                Changed("LstSelectedFrequencyAccuracy");
             }
         }
 
-        private string txtSelectedItem;
-        public string TxtSelectedItem
+        private MeasurementFrequencyAccuracy selectedAddItem;
+        public MeasurementFrequencyAccuracy SelectedAddItem
         {
             get
             {
-                return txtSelectedItem;
+                return selectedAddItem;
             }
             set
             {
-                txtSelectedItem = value;
-                Changed("TxtSelectedItem");
+                selectedAddItem = value;
+                Changed("SelectedAddItem");
             }
-
         }
+
+        private MeasurementFrequencyAccuracy selectedRemoveItem;
+        public MeasurementFrequencyAccuracy SelectedRemoveItem
+        {
+            get
+            {
+                return selectedRemoveItem;
+            }
+            set
+            {
+                selectedRemoveItem = value;
+                Changed("SelectedRemoveItem");
+            }
+        }
+
+        public ICommand Add { get; private set; }
+        public ICommand Remove { get; private set; }
+
         public ControlFrequencyAccuracy()
         {
             InitializeComponent();
+            lstSelectedFrequencyAccuracy = new ObservableCollection<MeasurementFrequencyAccuracy>();
             this.DataContext = this;
+            Add = new RelayCommand(AddItem);
+            Remove = new RelayCommand(RemoveItem);
+        }
+
+        private void AddItem(object obj)
+        {
+            if (SelectedAddItem != null && !LstSelectedFrequencyAccuracy.Contains(SelectedAddItem))
+                LstSelectedFrequencyAccuracy.Add(SelectedAddItem);
+        }
+
+        private void RemoveItem(object obj)
+        {
+            LstSelectedFrequencyAccuracy.Remove(SelectedRemoveItem);
         }
     }
 }

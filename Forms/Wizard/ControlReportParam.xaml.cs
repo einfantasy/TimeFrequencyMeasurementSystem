@@ -19,8 +19,17 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
     /// <summary>
     /// ControlPeportParam.xaml 的交互逻辑
     /// </summary>
-    public partial class ControlReportParam : ControlBase
+    public partial class ControlReportParam : ControlBase, INotifyPropertyChanged
     {
+        #region 属性更改通知
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void Changed(string PropertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
+        }
+        #endregion
+
         public class Device : INotifyPropertyChanged
         {
             #region 属性更改通知

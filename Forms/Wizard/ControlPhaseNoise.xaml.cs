@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeFrequencyMeasurementSystem.Data;
+using TimeFrequencyMeasurementSystem.Functions;
 using TimeFrequencyMeasurementSystem.Structs;
 
 namespace TimeFrequencyMeasurementSystem.Forms.Wizard
@@ -38,34 +39,50 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             }
         }
 
-        private MeasurementPhaseNoise selectedItem;
-        public MeasurementPhaseNoise SelectedItem
+        private MeasurementPhaseNoise selectedAddItem;
+        public MeasurementPhaseNoise SelectedAddItem
         {
             get
             {
-                return selectedItem;
+                return selectedAddItem;
             }
             set
             {
-                selectedItem = value;
-                TxtSelectedItem = string.Format("{0}, {1}, {2}", selectedItem.Now, selectedItem.FrequencyOffset, selectedItem.Noise);
-                Changed("SelectedItem");
+                selectedAddItem = value;
+                Changed("SelectedAddItem");
             }
         }
 
-        private string txtSelectedItem;
-        public string TxtSelectedItem
+        private MeasurementPhaseNoise selectedRemoveItem;
+        public MeasurementPhaseNoise SelectedRemoveItem
         {
             get
             {
-                return txtSelectedItem;
+                return selectedRemoveItem;
             }
             set
             {
-                txtSelectedItem = value;
-                Changed("TxtSelectedItem");
+                selectedRemoveItem = value;
+                Changed("SelectedRemoveItem");
             }
         }
+
+        private ObservableCollection<MeasurementPhaseNoise> lstSelectedPhaseNoise;
+        public ObservableCollection<MeasurementPhaseNoise> LstSelectedPhaseNoise
+        {
+            set
+            {
+                lstSelectedPhaseNoise = value;
+                Changed("LstSelectedPhaseNoise");
+            }
+            get
+            {
+                return lstSelectedPhaseNoise;
+            }
+        }
+
+        public ICommand Add { get; private set; }
+        public ICommand Remove { get; private set; }
 
         public BitmapImage SelectedImage
         {
@@ -78,7 +95,21 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
         public ControlPhaseNoise()
         {
             InitializeComponent();
+            lstSelectedPhaseNoise = new ObservableCollection<MeasurementPhaseNoise>();
             this.DataContext = this;
+            Add = new RelayCommand(AddItem);
+            Remove = new RelayCommand(RemoveItem);
+        }
+
+        private void AddItem(object obj)
+        {
+            if (SelectedAddItem != null && !LstSelectedPhaseNoise.Contains(SelectedAddItem))
+                LstSelectedPhaseNoise.Add(SelectedAddItem);
+        }
+
+        private void RemoveItem(object obj)
+        {
+            LstSelectedPhaseNoise.Remove(SelectedRemoveItem);
         }
     }
 }
