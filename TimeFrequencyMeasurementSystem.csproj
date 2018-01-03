@@ -58,6 +58,33 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Data\MeasurementData.cs" />
+    <Compile Include="Forms\SubForm\BootFeatureForm.xaml.cs">
+      <DependentUpon>BootFeatureForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubForm\BurnInRateForm.xaml.cs">
+      <DependentUpon>BurnInRateForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubForm\DriftRateForm.xaml.cs">
+      <DependentUpon>DriftRateForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubForm\FrequencyAccuracyFrom.xaml.cs">
+      <DependentUpon>FrequencyAccuracyFrom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubForm\FrequencyCountForm.xaml.cs">
+      <DependentUpon>FrequencyCountForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubForm\FrequencyReproducibilityForm.xaml.cs">
+      <DependentUpon>FrequencyReproducibilityForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubForm\IntervalForm.xaml.cs">
+      <DependentUpon>IntervalForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubForm\ParseNoiseForm.xaml.cs">
+      <DependentUpon>ParseNoiseForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubForm\ShortTermStabilityFrom.xaml.cs">
+      <DependentUpon>ShortTermStabilityFrom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Wizard\ControlBase.cs" />
     <Compile Include="Functions\Expressions.cs" />
     <Compile Include="Functions\LeastSquare.cs" />
@@ -74,6 +101,42 @@
     <Compile Include="Structs\MeasurementPhaseNoise.cs" />
     <Compile Include="Structs\MeasurementFrequencyReproducibility.cs" />
     <Compile Include="Structs\MeasurementShortTermStability.cs" />
+    <Page Include="Forms\SubForm\BootFeatureForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SubForm\BurnInRateForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SubForm\DriftRateForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SubForm\FrequencyAccuracyFrom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SubForm\FrequencyCountForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SubForm\FrequencyReproducibilityForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SubForm\IntervalForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SubForm\ParseNoiseForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SubForm\ShortTermStabilityFrom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\WindowBootFeature.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
