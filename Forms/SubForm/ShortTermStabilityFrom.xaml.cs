@@ -93,6 +93,7 @@ namespace TimeFrequencyMeasurementSystem.Forms.SubForm
                 ScreenCut.MaskWindow scwd = new ScreenCut.MaskWindow();
                 if (scwd.ShowDialog() == true)
                 {
+                    MeasurementData.BmpShortTermStability = scwd.BMP;
                     MeasurementData.ImgShortTermStability = Common.BitmapToBitmapImage(scwd.BMP);
                     Changed("ImgShortTermStability");
                 }

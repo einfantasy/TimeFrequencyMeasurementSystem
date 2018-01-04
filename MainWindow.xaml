@@ -27,7 +27,7 @@
                 <SubForm:BootFeatureForm></SubForm:BootFeatureForm>
             </TabItem>
             <TabItem x:Name="TabPage3" Header="相位噪声">
-                <SubForm:ParseNoiseForm></SubForm:ParseNoiseForm>
+                <SubForm:PhaseNoiseForm></SubForm:PhaseNoiseForm>
             </TabItem>
             <TabItem x:Name="TabPage4" Header="短期稳定度">
                 <SubForm:ShortTermStabilityFrom></SubForm:ShortTermStabilityFrom>

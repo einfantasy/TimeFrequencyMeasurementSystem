@@ -79,8 +79,8 @@
     <Compile Include="Forms\SubForm\IntervalForm.xaml.cs">
       <DependentUpon>IntervalForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SubForm\ParseNoiseForm.xaml.cs">
-      <DependentUpon>ParseNoiseForm.xaml</DependentUpon>
+    <Compile Include="Forms\SubForm\PhaseNoiseForm.xaml.cs">
+      <DependentUpon>PhaseNoiseForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\SubForm\ShortTermStabilityFrom.xaml.cs">
       <DependentUpon>ShortTermStabilityFrom.xaml</DependentUpon>
@@ -89,6 +89,7 @@
     <Compile Include="Functions\Expressions.cs" />
     <Compile Include="Functions\LeastSquare.cs" />
     <Compile Include="Functions\RelayCommand.cs" />
+    <Compile Include="Functions\WordHelper.cs" />
     <Compile Include="Structs\MeasurementBase.cs" />
     <Compile Include="Structs\MeasurementBootFeature.cs" />
     <Compile Include="Structs\MeasurementBurnInRate.cs" />
@@ -129,7 +130,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\SubForm\ParseNoiseForm.xaml">
+    <Page Include="Forms\SubForm\PhaseNoiseForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -317,6 +318,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Doc\CertificationTemplate.doc" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -324,13 +326,46 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ScreenCut\ScreenCut\ScreenCut.csproj">
+    <Content Include="Dll\NumericUpDownControl.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Subs\DataTimePicker\DataTimePicker.csproj">
+      <Project>{e67965a7-6224-4441-9513-d724ff662307}</Project>
+      <Name>DataTimePicker</Name>
+    </ProjectReference>
+    <ProjectReference Include="Subs\ScreenCut\ScreenCut.csproj">
       <Project>{5606128f-fd60-4eba-93fa-21435a84a532}</Project>
       <Name>ScreenCut</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Dll\NumericUpDownControl.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

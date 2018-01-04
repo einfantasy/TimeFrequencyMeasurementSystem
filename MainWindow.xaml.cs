@@ -33,7 +33,6 @@ namespace TimeFrequencyMeasurementSystem
         public MainWindow()
         {
             InitializeComponent();
-          
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

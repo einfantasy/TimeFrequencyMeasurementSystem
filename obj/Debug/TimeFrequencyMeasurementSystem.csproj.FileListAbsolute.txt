@@ -64,7 +64,6 @@ G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\FrequencyCountForm.g.cs
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\FrequencyReproducibilityForm.g.cs
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\IntervalForm.g.cs
-G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\ParseNoiseForm.g.cs
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\ShortTermStabilityFrom.g.cs
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\bin\Debug\ScreenCut.dll
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\bin\Debug\ScreenCut.pdb
@@ -75,5 +74,9 @@ G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\FrequencyCountForm.baml
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\FrequencyReproducibilityForm.baml
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\IntervalForm.baml
-G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\ParseNoiseForm.baml
 G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\ShortTermStabilityFrom.baml
+G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\TimeFrequencyMeasurementSystem.csproj.ResolveComReference.cache
+G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\PhaseNoiseForm.g.cs
+G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\bin\Debug\DataTimePicker.dll
+G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\bin\Debug\DataTimePicker.pdb
+G:\TimeFrequencyMeasurementSystem\TimeFrequencyMeasurementSystem\obj\Debug\Forms\SubForm\PhaseNoiseForm.baml
