@@ -19,4 +19,5 @@ obj/Debug/TimeFrequencyMeasurementSystem.pdb
 obj/Debug/TimeFrequencyMeasurementSystem_MarkupCompile.lref
 obj/Debug/Forms/SubForm/BootFeatureForm.g.i.cs
 obj/Debug/Forms/SubForm/BurnInRateForm.g.i.cs
-obj/Debug
+obj/Debug/
+bin/Debug/
