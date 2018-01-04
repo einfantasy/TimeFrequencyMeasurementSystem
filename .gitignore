@@ -19,4 +19,16 @@ obj/Debug/TimeFrequencyMeasurementSystem.pdb
 obj/Debug/TimeFrequencyMeasurementSystem_MarkupCompile.lref
 obj/Debug/Forms/SubForm/BootFeatureForm.g.i.cs
 obj/Debug/Forms/SubForm/BurnInRateForm.g.i.cs
-obj/Debug
+obj/Debug/
+bin/Debug/NumericUpDownControl.dll
+bin/Debug/TimeFrequencyMeasurementSystem.exe.config
+obj/Debug/App.g.i.cs
+obj/Debug/App.g.i.cs
+bin/Debug/
+obj/Debug/App.g.i.cs
+obj/Debug/MainWindow.g.i.cs
+obj/Debug/TimeFrequencyMeasurementSystem.csproj.FileListAbsolute.txt
+obj/Debug/TimeFrequencyMeasurementSystem_MarkupCompile.i.cache
+obj/Debug/App.g.i.cs
+obj/Debug/App.g.i.cs
+obj/Debug/App.g.i.cs

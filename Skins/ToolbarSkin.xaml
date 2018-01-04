@@ -1,0 +1,212 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:TimeFrequencyMeasurementSystem.Skins">
+    <Image x:Key="menu_open_img" Source="Image/menu_open.png"></Image>
+    <Image x:Key="menu_save_img" Source="Image/menu_save.png"></Image>
+    <Image x:Key="menu_save_as_img" Source="Image/menu_save_as.png"></Image>
+    <Image x:Key="menu_export_img" Source="Image/menu_export.png"></Image>
+
+    <Style x:Key="menu_open_style" TargetType="Button">
+        <Setter Property="Content" Value="{StaticResource menu_open_img}"/>
+        <Setter Property="ToolTip" Value="打开"/>
+        <Setter Property="Margin" Value="10,5,10,5"/>
+    </Style>
+    <Style x:Key="menu_save_style" TargetType="Button">
+        <Setter Property="Content" Value="{StaticResource menu_save_img}"/>
+        <Setter Property="ToolTip" Value="保存"/>
+        <Setter Property="Margin" Value="10,5,10,5"/>
+    </Style>
+    <Style x:Key="menu_save_as_style" TargetType="Button">
+        <Setter Property="Content" Value="{StaticResource menu_save_as_img}"/>
+        <Setter Property="ToolTip" Value="另存为"/>
+        <Setter Property="Margin" Value="10,5,10,5"/>
+    </Style>
+    <Style x:Key="menu_export_style" TargetType="Button">
+        <Setter Property="Content" Value="{StaticResource menu_export_img}"/>
+        <Setter Property="ToolTip" Value="导出"/>
+        <Setter Property="Margin" Value="10,5,10,5"/>
+    </Style>
+
+    <Image x:Key="btn_fc_img" Source="Image/btn_fc.png"/>
+    <Image x:Key="btn_bf_img" Source="Image/btn_bf.png"/>
+    <Image x:Key="btn_pn_img" Source="Image/btn_parse_noise.png"/>
+    <Image x:Key="btn_sis_img" Source="Image/btn_sort_item_stability.png"/>
+    <Image x:Key="btn_fa_img" Source="Image/btn_frequency_accuracy.png"/>
+    <Image x:Key="btn_fr_img" Source="Image/btn_frequency_reactivity.png"/>
+    <Image x:Key="btn_dr_img" Source="Image/btn_drift_rate.png"/>
+    <Image x:Key="btn_ar_img" Source="Image/btn_aging_rate.png"/>
+    <Image x:Key="btn_i_img" Source="Image/btn_interval.png"/>
+
+    <Style x:Key="menu_btn_base" TargetType="Button" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style x:Key="menu_lb_base" TargetType="Label" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+    </Style>
+
+    <Style x:Key="btn_fc_style" TargetType="Label" BasedOn="{StaticResource menu_lb_base}">
+        <Setter Property="Content" Value="{StaticResource btn_fc_img}"/>
+        <Setter Property="ToolTip" Value="频率计数"/>
+    </Style>
+    <Style x:Key="btn_bf_style" TargetType="Label" BasedOn="{StaticResource menu_lb_base}" >
+        <Setter Property="Content" Value="{StaticResource btn_bf_img}"/>
+        <Setter Property="ToolTip" Value="开机特性"/>
+    </Style>
+    <Style x:Key="btn_pn_style" TargetType="Label"  BasedOn="{StaticResource menu_lb_base}">
+        <Setter Property="Content" Value="{StaticResource btn_pn_img}"/>
+        <Setter Property="ToolTip" Value="相位噪声"/>
+    </Style>
+    <Style x:Key="btn_sis_style" TargetType="Label" BasedOn="{StaticResource menu_lb_base}" >
+        <Setter Property="Content" Value="{StaticResource btn_sis_img}"/>
+        <Setter Property="ToolTip" Value="短期稳定度"/>
+    </Style>
+    <Style x:Key="btn_fa_style" TargetType="Label" BasedOn="{StaticResource menu_lb_base}" >
+        <Setter Property="Content" Value="{StaticResource btn_fa_img}"/>
+        <Setter Property="ToolTip" Value="频率准确度"/>
+    </Style>
+    <Style x:Key="btn_fr_style" TargetType="Label"  BasedOn="{StaticResource menu_lb_base}">
+        <Setter Property="Content" Value="{StaticResource btn_fr_img}"/>
+        <Setter Property="ToolTip" Value="频率复现性"/>
+    </Style>
+    <Style x:Key="btn_dr_style" TargetType="Label" BasedOn="{StaticResource menu_lb_base}" >
+        <Setter Property="Content" Value="{StaticResource btn_dr_img}"/>
+        <Setter Property="ToolTip" Value="漂移率"/>
+    </Style>
+    <Style x:Key="btn_ar_style" TargetType="Label"  BasedOn="{StaticResource menu_lb_base}">
+        <Setter Property="Content" Value="{StaticResource btn_ar_img}"/>
+        <Setter Property="ToolTip" Value="日老化率"/>
+    </Style>
+    <Style x:Key="btn_i_style" TargetType="Label"  BasedOn="{StaticResource menu_lb_base}">
+        <Setter Property="Content" Value="{StaticResource btn_i_img}"/>
+        <Setter Property="ToolTip" Value="时间间隔"/>
+    </Style>
+
+
+
+
+
+<!--tabcontrol样式-->
+
+    <Style x:Key="TabItemFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <!--<Rectangle Margin="3,3,3,1" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>-->
+                    <Rectangle Margin="0" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#8C8E94"/>
+    <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#F3F3F3" Offset="0"/>
+        <GradientStop Color="#EBEBEB" Offset="0.5"/>
+        <GradientStop Color="#DDDDDD" Offset="0.5"/>
+        <GradientStop Color="#CDCDCD" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItemHotBackground" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#EAF6FD" Offset="0.15"/>
+        <GradientStop Color="#D9F0FC" Offset=".5"/>
+        <GradientStop Color="#BEE6FD" Offset=".5"/>
+        <GradientStop Color="#A7D9F5" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="TabItemSelectedBackground" Color="#F9F9F9"/>
+    <SolidColorBrush x:Key="TabItemHotBorderBrush" Color="#3C7FB1"/>
+    <SolidColorBrush x:Key="TabItemDisabledBackground" Color="#F4F4F4"/>
+    <SolidColorBrush x:Key="TabItemDisabledBorderBrush" Color="#FFC9C7BA"/>
+    <Style x:Key="TabItemStyle1" TargetType="{x:Type TabItem}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Height" Value="55"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}" >
+                    <Grid SnapsToDevicePixels="true">
+                        <Border x:Name="Bd" BorderBrush="Transparent" BorderThickness="0,0,0,0" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="Content" ContentSource="Header" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--<Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemHotBackground}"/>
+                        </Trigger>-->
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Panel.ZIndex" Value="20"/>
+                            <Setter Property="Margin" TargetName="Bd" Value="0,0,-20,0"/>
+                            <!--<Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemSelectedBackground}"/>-->
+                        </Trigger>
+                        <!--<MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="false"/>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            --><!--<Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemHotBorderBrush}"/>--><!--
+                        </MultiTrigger>-->
+                        <Trigger Property="TabStripPlacement" Value="Bottom">
+                            <Setter Property="BorderThickness" TargetName="Bd" Value="1,0,1,1"/>
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter Property="BorderThickness" TargetName="Bd" Value="1,1,0,1"/>
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter Property="BorderThickness" TargetName="Bd" Value="0,1,1,1"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="TabStripPlacement" Value="Top"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Margin" Value="-2,-2,-2,-1"/>
+                            <Setter Property="Margin" TargetName="Content" Value="0,0,0,1"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="TabStripPlacement" Value="Bottom"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Margin" Value="-2,-1,-2,-2"/>
+                            <Setter Property="Margin" TargetName="Content" Value="0,1,0,0"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="TabStripPlacement" Value="Left"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Margin" Value="-2,-2,-1,-2"/>
+                            <Setter Property="Margin" TargetName="Content" Value="0,0,1,0"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="TabStripPlacement" Value="Right"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Margin" Value="-1,-2,-2,-2"/>
+                            <Setter Property="Margin" TargetName="Content" Value="1,0,0,0"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <!--<Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemDisabledBackground}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemDisabledBorderBrush}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+</ResourceDictionary>

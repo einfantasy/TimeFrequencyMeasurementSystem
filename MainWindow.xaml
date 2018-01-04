@@ -7,46 +7,104 @@
         xmlns:SubForm="clr-namespace:TimeFrequencyMeasurementSystem.Forms.SubForm"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="TimeFrequencyMeasurementSystem.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="749">
-    <Grid>
+        Title="MainWindow" Height="800" Width="1000">
+    <Grid Background="#848484">
         <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ToolBar x:Name="toolBar" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Button x:Name="BtnOpen" Content="打开" />
-            <Button x:Name="BtnSave" Content="保存" />
-            <Button x:Name="BtnSaveAs" Content="另存为" />
-            <Button x:Name="BtnExport" Content="生成报告" Click="BtnExport_Click" />
+        <ToolBar x:Name="toolBar" Grid.Row="0" HorizontalAlignment="Left" Background="Transparent" VerticalAlignment="Top" Loaded="toolBar_Loaded">
+            <Button x:Name="BtnOpen" Style="{StaticResource menu_open_style}" />
+            <Button x:Name="BtnSave" Style="{StaticResource menu_save_style}" />
+            <Button x:Name="BtnSaveAs" Style="{StaticResource menu_save_as_style}" />
+            <Button x:Name="BtnExport" Style="{StaticResource menu_export_style}" Click="BtnExport_Click" />
         </ToolBar>
-        <TabControl Grid.Row="1">
-            <TabItem x:Name="TabPage1" Header="频率计数">
-                <SubForm:FrequencyCountForm HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></SubForm:FrequencyCountForm>
-            </TabItem>
-            <TabItem x:Name="TabPage2" Header="开机特性">
-                <SubForm:BootFeatureForm></SubForm:BootFeatureForm>
-            </TabItem>
-            <TabItem x:Name="TabPage3" Header="相位噪声">
-                <SubForm:ParseNoiseForm></SubForm:ParseNoiseForm>
-            </TabItem>
-            <TabItem x:Name="TabPage4" Header="短期稳定度">
-                <SubForm:ShortTermStabilityFrom></SubForm:ShortTermStabilityFrom>
-            </TabItem>
-            <TabItem x:Name="TabPage5" Header="频率准确度">
-                <SubForm:FrequencyAccuracyFrom></SubForm:FrequencyAccuracyFrom>
-            </TabItem>
-            <TabItem x:Name="TabPage6" Header="频率复现性">
-                <SubForm:FrequencyReproducibilityForm></SubForm:FrequencyReproducibilityForm>
-            </TabItem>
-            <TabItem x:Name="TabPage7" Header="漂移率">
-                <SubForm:DriftRateForm></SubForm:DriftRateForm>
-            </TabItem>
-            <TabItem x:Name="TabPage8" Header="日老化率">
-                <SubForm:BurnInRateForm></SubForm:BurnInRateForm>
-            </TabItem>
-            <TabItem x:Name="TabPage9" Header="时间间隔">
-                <SubForm:IntervalForm></SubForm:IntervalForm>
-            </TabItem>
-        </TabControl>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--<Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Name="BtnFrequencyCounter" Grid.Row="1" Style="{StaticResource btn_fc_style}"></Button>
+                <Button Name="BtnBootFeature" Grid.Row="2" Style="{StaticResource btn_bf_style}">></Button>
+                <Button Name="BtnParseNoise" Grid.Row="3" Style="{StaticResource btn_pn_style}">></Button>
+                <Button Name="BtnShortItemStability" Grid.Row="4" Style="{StaticResource btn_sis_style}">></Button>
+                <Button Name="BtnFrequencyReactivity" Grid.Row="5" Style="{StaticResource btn_fr_style}">></Button>
+                <Button Name="BtnFrequencyAcuuracy" Grid.Row="6" Style="{StaticResource btn_fa_style}">></Button>
+                <Button Name="BtnFrequencyDriftRate" Grid.Row="7" Style="{StaticResource btn_dr_style}">></Button>
+                <Button Name="BtnFrequencyAgingRate" Grid.Row="8" Style="{StaticResource btn_fa_style}">></Button>
+                <Button Name="BtnInterval" Grid.Row="9" Style="{StaticResource btn_i_style}">></Button>
+            </Grid>-->
+            <TabControl Grid.Column="0" Grid.ColumnSpan="2" SelectedIndex="{Binding SelectTableIndex}" TabStripPlacement="Left">
+                <TabItem x:Name="TabPage1"  Style="{StaticResource TabItemStyle1}">
+                    <TabItem.Header>
+                        <Label Style="{StaticResource btn_fc_style}"></Label>
+                    </TabItem.Header>
+                    <SubForm:FrequencyCountForm HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></SubForm:FrequencyCountForm>
+                </TabItem>
+                <TabItem x:Name="TabPage2" Style="{StaticResource TabItemStyle1}">
+                    <TabItem.Header>
+                        <Label Style="{StaticResource btn_bf_style}"></Label>
+                    </TabItem.Header>
+                    <SubForm:BootFeatureForm></SubForm:BootFeatureForm>
+                </TabItem>
+                <TabItem x:Name="TabPage3" Style="{StaticResource TabItemStyle1}">
+                    <TabItem.Header>
+                        <Label Style="{StaticResource btn_pn_style}"></Label>
+                    </TabItem.Header>
+                    <SubForm:ParseNoiseForm></SubForm:ParseNoiseForm>
+                </TabItem>
+                <TabItem x:Name="TabPage4" Style="{StaticResource TabItemStyle1}">
+                    <TabItem.Header>
+                        <Label Style="{StaticResource btn_sis_style}"></Label>
+                    </TabItem.Header>
+                    <SubForm:ShortTermStabilityFrom></SubForm:ShortTermStabilityFrom>
+                </TabItem>
+                <TabItem x:Name="TabPage5" Style="{StaticResource TabItemStyle1}">
+                    <TabItem.Header>
+                        <Label Style="{StaticResource btn_fa_style}"></Label>
+                    </TabItem.Header>
+                    <SubForm:FrequencyAccuracyFrom></SubForm:FrequencyAccuracyFrom>
+                </TabItem>
+                <TabItem x:Name="TabPage6"  Style="{StaticResource TabItemStyle1}">
+                    <TabItem.Header>
+                        <Label Style="{StaticResource btn_fr_style}"></Label>
+                    </TabItem.Header>
+                    <SubForm:FrequencyReproducibilityForm></SubForm:FrequencyReproducibilityForm>
+                </TabItem>
+                <TabItem x:Name="TabPage7" Style="{StaticResource TabItemStyle1}">
+                    <TabItem.Header>
+                        <Label Style="{StaticResource btn_dr_style}"></Label>
+                    </TabItem.Header>
+                    <SubForm:DriftRateForm></SubForm:DriftRateForm>
+                </TabItem>
+                <TabItem x:Name="TabPage8" Style="{StaticResource TabItemStyle1}">
+                    <TabItem.Header>
+                        <Label Style="{StaticResource btn_ar_style}"></Label>
+                    </TabItem.Header>
+                    <SubForm:BurnInRateForm></SubForm:BurnInRateForm>
+                </TabItem>
+                <TabItem x:Name="TabPage9" Style="{StaticResource TabItemStyle1}">
+                    <TabItem.Header>
+                        <Label Style="{StaticResource btn_i_style}"></Label>
+                    </TabItem.Header>
+                    <SubForm:IntervalForm></SubForm:IntervalForm>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        
     </Grid>
 </Window>

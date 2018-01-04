@@ -24,6 +24,9 @@ using TimeFrequencyMeasurementSystem.Structs;
 
 namespace TimeFrequencyMeasurementSystem
 {
+
+    
+
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
@@ -42,12 +45,28 @@ namespace TimeFrequencyMeasurementSystem
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
         }
+
+
+
+
         
         private void BtnExport_Click(object sender, RoutedEventArgs e)
         {
             WindowWizard wizard = new WindowWizard();
             wizard.ShowDialog();
         }
-        
+
+        private void toolBar_Loaded(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.ToolBar tbar = (System.Windows.Controls.ToolBar)sender;
+            if (tbar != null)
+            {
+                var overflowgrid = tbar.Template.FindName("OverflowGrid", tbar) as FrameworkElement;
+                if (overflowgrid != null)
+                {
+                    overflowgrid.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
     }
 }
