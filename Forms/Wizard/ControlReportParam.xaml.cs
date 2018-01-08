@@ -19,8 +19,17 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
     /// <summary>
     /// ControlPeportParam.xaml 的交互逻辑
     /// </summary>
-    public partial class ControlReportParam : ControlBase
+    public partial class ControlReportParam : ControlBase, INotifyPropertyChanged
     {
+        #region 属性更改通知
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void Changed(string PropertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
+        }
+        #endregion
+
         public class Device : INotifyPropertyChanged
         {
             #region 属性更改通知
@@ -52,6 +61,90 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
 
         public ObservableCollection<Device> LstDevices { get; set; }
         public ObservableCollection<Document> LstDocuments { get; set; }
+
+        private string certificationId;
+        public string CertificationId
+        {
+            get
+            {
+                return certificationId;
+            }
+            set
+            {
+                certificationId = value;
+                Changed("CertificationId");
+            }
+        }
+
+        private string organization;
+        public string Organization
+        {
+            get
+            {
+                return organization;
+            }
+            set
+            {
+                organization = value;
+                Changed("Organization");
+            }
+        }
+
+        private string address;
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+            set
+            {
+                address = value;
+                Changed("Address");
+            }
+        }
+
+        private string instrument;
+        public string Instrument
+        {
+            get
+            {
+                return instrument;
+            }
+            set
+            {
+                instrument = value;
+                Changed("Instrument");
+            }
+        }
+
+        private string instrumentType;
+        public string InstrumentType
+        {
+            get
+            {
+                return instrumentType;
+            }
+            set
+            {
+                instrumentType = value;
+                Changed("InstrumentType");
+            }
+        }
+
+        private string instrumentNo;
+        public string InstrumentNo
+        {
+            get
+            {
+                return instrumentNo;
+            }
+            set
+            {
+                instrumentNo = value;
+                Changed("InstrumentNo");
+            }
+        }
 
         public ControlReportParam()
         {

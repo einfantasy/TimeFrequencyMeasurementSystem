@@ -20,6 +20,7 @@ obj/Debug/TimeFrequencyMeasurementSystem_MarkupCompile.lref
 obj/Debug/Forms/SubForm/BootFeatureForm.g.i.cs
 obj/Debug/Forms/SubForm/BurnInRateForm.g.i.cs
 obj/Debug/
+<<<<<<< HEAD
 bin/Debug/NumericUpDownControl.dll
 bin/Debug/TimeFrequencyMeasurementSystem.exe.config
 obj/Debug/App.g.i.cs
@@ -32,3 +33,7 @@ obj/Debug/TimeFrequencyMeasurementSystem_MarkupCompile.i.cache
 obj/Debug/App.g.i.cs
 obj/Debug/App.g.i.cs
 obj/Debug/App.g.i.cs
+=======
+bin/Debug/
+>>>>>>> cdcc9974dc848a87556b6959472666e824a16c53
+Subs/ScreenCut/obj/Debug/MaskWindow.g.cs

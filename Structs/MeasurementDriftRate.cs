@@ -72,7 +72,7 @@ namespace TimeFrequencyMeasurementSystem.Structs
                     count++;
                 }
 
-                double rate = LeastSquare.LinearResult(days, values)[0];
+                double rate = Math.Round((LeastSquare.LinearResult(days, values)[0] * 100), 2);
                 DriftRate = rate.ToString();
                 return rate;
             }

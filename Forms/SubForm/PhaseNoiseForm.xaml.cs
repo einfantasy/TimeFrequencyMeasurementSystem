@@ -20,9 +20,9 @@ using TimeFrequencyMeasurementSystem.Structs;
 namespace TimeFrequencyMeasurementSystem.Forms.SubForm
 {
     /// <summary>
-    /// ParseNoise.xaml 的交互逻辑
+    /// PhaseNoise.xaml 的交互逻辑
     /// </summary>
-    public partial class ParseNoiseForm : UserControl, INotifyPropertyChanged
+    public partial class PhaseNoiseForm : UserControl, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private void Changed(string PropertyName)
@@ -52,7 +52,7 @@ namespace TimeFrequencyMeasurementSystem.Forms.SubForm
                 return MeasurementData.ImgPhaseNoise;
             }
         }
-        public ParseNoiseForm()
+        public PhaseNoiseForm()
         {
             InitializeComponent();
             LstPhaseNoise = new ObservableCollection<MeasurementPhaseNoise>();
@@ -85,10 +85,10 @@ namespace TimeFrequencyMeasurementSystem.Forms.SubForm
             mainwd.WindowState = WindowState.Minimized;
             try
             {
-
                 ScreenCut.MaskWindow scwd = new ScreenCut.MaskWindow();
                 if (scwd.ShowDialog() == true)
                 {
+                    MeasurementData.BmpPhaseNoise = scwd.BMP;
                     MeasurementData.ImgPhaseNoise = Common.BitmapToBitmapImage(scwd.BMP);
                     Changed("ImgPhaseNoise");
                 }

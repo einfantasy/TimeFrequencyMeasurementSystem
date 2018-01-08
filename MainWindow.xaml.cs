@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GFramework.BlankWindow;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -30,13 +31,12 @@ namespace TimeFrequencyMeasurementSystem
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : BlankWindow, INotifyPropertyChanged
     {
        
         public MainWindow()
         {
             InitializeComponent();
-          
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -45,11 +45,6 @@ namespace TimeFrequencyMeasurementSystem
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
         }
-
-
-
-
-        
         private void BtnExport_Click(object sender, RoutedEventArgs e)
         {
             WindowWizard wizard = new WindowWizard();
@@ -67,6 +62,29 @@ namespace TimeFrequencyMeasurementSystem
                     overflowgrid.Visibility = Visibility.Collapsed;
                 }
             }
+        }
+
+        private void BtnMinmize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void BtnMaxmize_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+            
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

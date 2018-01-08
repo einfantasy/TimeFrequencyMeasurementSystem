@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeFrequencyMeasurementSystem.Data;
+using TimeFrequencyMeasurementSystem.Functions;
 using TimeFrequencyMeasurementSystem.Structs;
 
 namespace TimeFrequencyMeasurementSystem.Forms.Wizard
@@ -38,39 +39,69 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             }
         }
 
-        private MeasurementFrequencyReproducibility selectedItem;
-        public MeasurementFrequencyReproducibility SelectedItem
+        private ObservableCollection<MeasurementFrequencyReproducibility> lstSelectedFrequencyReproducibility;
+        public ObservableCollection<MeasurementFrequencyReproducibility> LstSelectedFrequencyReproducibility
         {
             get
             {
-                return selectedItem;
+                return lstSelectedFrequencyReproducibility;
             }
             set
             {
-                selectedItem = value;
-                TxtSelectedItem = string.Format("{0}, {1}, {2}, {3}, {4}", selectedItem.Now, selectedItem.FrequencyI, selectedItem.FrequencyII, selectedItem.FrequencyStandard, selectedItem.Reproducibility);
-                Changed("SelectedItem");
+                lstSelectedFrequencyReproducibility = value;
+                Changed("LstSelectedFrequencyReproducibility");
             }
         }
 
-        private string txtSelectedItem;
-        public string TxtSelectedItem
+        private MeasurementFrequencyReproducibility selectedAddItem;
+        public MeasurementFrequencyReproducibility SelectedAddItem
         {
             get
             {
-                return txtSelectedItem;
+                return selectedAddItem;
             }
             set
             {
-                txtSelectedItem = value;
-                Changed("TxtSelectedItem");
+                selectedAddItem = value;
+                Changed("SelectedAddItem");
             }
         }
+
+        private MeasurementFrequencyReproducibility selectedRemoveItem;
+        public MeasurementFrequencyReproducibility SelectedRemoveItem
+        {
+            get
+            {
+                return selectedRemoveItem;
+            }
+            set
+            {
+                selectedRemoveItem = value;
+                Changed("SelectedRemoveItem");
+            }
+        }
+
+        public ICommand Add { get; private set; }
+        public ICommand Remove { get; private set; }
 
         public ControlFrequencyReproducibility()
         {
             InitializeComponent();
+            lstSelectedFrequencyReproducibility = new ObservableCollection<MeasurementFrequencyReproducibility>();
             this.DataContext = this;
+            Add = new RelayCommand(AddItem);
+            Remove = new RelayCommand(RemoveItem);
+        }
+
+        private void AddItem(object obj)
+        {
+            if (SelectedAddItem != null && !LstSelectedFrequencyReproducibility.Contains(SelectedAddItem))
+                LstSelectedFrequencyReproducibility.Add(SelectedAddItem);
+        }
+
+        private void RemoveItem(object obj)
+        {
+            LstSelectedFrequencyReproducibility.Remove(SelectedRemoveItem);
         }
     }
 }

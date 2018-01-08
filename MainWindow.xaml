@@ -1,110 +1,156 @@
-﻿<Window
+﻿<blankWindow:BlankWindow x:Class="TimeFrequencyMeasurementSystem.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeFrequencyMeasurementSystem"
         xmlns:SubForm="clr-namespace:TimeFrequencyMeasurementSystem.Forms.SubForm"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="TimeFrequencyMeasurementSystem.MainWindow"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1000">
-    <Grid Background="#848484">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <ToolBar x:Name="toolBar" Grid.Row="0" HorizontalAlignment="Left" Background="Transparent" VerticalAlignment="Top" Loaded="toolBar_Loaded">
-            <Button x:Name="BtnOpen" Style="{StaticResource menu_open_style}" />
-            <Button x:Name="BtnSave" Style="{StaticResource menu_save_style}" />
-            <Button x:Name="BtnSaveAs" Style="{StaticResource menu_save_as_style}" />
-            <Button x:Name="BtnExport" Style="{StaticResource menu_export_style}" Click="BtnExport_Click" />
-        </ToolBar>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="150"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <!--<Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Button Name="BtnFrequencyCounter" Grid.Row="1" Style="{StaticResource btn_fc_style}"></Button>
-                <Button Name="BtnBootFeature" Grid.Row="2" Style="{StaticResource btn_bf_style}">></Button>
-                <Button Name="BtnParseNoise" Grid.Row="3" Style="{StaticResource btn_pn_style}">></Button>
-                <Button Name="BtnShortItemStability" Grid.Row="4" Style="{StaticResource btn_sis_style}">></Button>
-                <Button Name="BtnFrequencyReactivity" Grid.Row="5" Style="{StaticResource btn_fr_style}">></Button>
-                <Button Name="BtnFrequencyAcuuracy" Grid.Row="6" Style="{StaticResource btn_fa_style}">></Button>
-                <Button Name="BtnFrequencyDriftRate" Grid.Row="7" Style="{StaticResource btn_dr_style}">></Button>
-                <Button Name="BtnFrequencyAgingRate" Grid.Row="8" Style="{StaticResource btn_fa_style}">></Button>
-                <Button Name="BtnInterval" Grid.Row="9" Style="{StaticResource btn_i_style}">></Button>
-            </Grid>-->
-            <TabControl Grid.Column="0" Grid.ColumnSpan="2" SelectedIndex="{Binding SelectTableIndex}" TabStripPlacement="Left">
-                <TabItem x:Name="TabPage1"  Style="{StaticResource TabItemStyle1}">
-                    <TabItem.Header>
-                        <Label Style="{StaticResource btn_fc_style}"></Label>
-                    </TabItem.Header>
-                    <SubForm:FrequencyCountForm HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></SubForm:FrequencyCountForm>
-                </TabItem>
-                <TabItem x:Name="TabPage2" Style="{StaticResource TabItemStyle1}">
-                    <TabItem.Header>
-                        <Label Style="{StaticResource btn_bf_style}"></Label>
-                    </TabItem.Header>
-                    <SubForm:BootFeatureForm></SubForm:BootFeatureForm>
-                </TabItem>
-                <TabItem x:Name="TabPage3" Style="{StaticResource TabItemStyle1}">
-                    <TabItem.Header>
-                        <Label Style="{StaticResource btn_pn_style}"></Label>
-                    </TabItem.Header>
-                    <SubForm:ParseNoiseForm></SubForm:ParseNoiseForm>
-                </TabItem>
-                <TabItem x:Name="TabPage4" Style="{StaticResource TabItemStyle1}">
-                    <TabItem.Header>
-                        <Label Style="{StaticResource btn_sis_style}"></Label>
-                    </TabItem.Header>
-                    <SubForm:ShortTermStabilityFrom></SubForm:ShortTermStabilityFrom>
-                </TabItem>
-                <TabItem x:Name="TabPage5" Style="{StaticResource TabItemStyle1}">
-                    <TabItem.Header>
-                        <Label Style="{StaticResource btn_fa_style}"></Label>
-                    </TabItem.Header>
-                    <SubForm:FrequencyAccuracyFrom></SubForm:FrequencyAccuracyFrom>
-                </TabItem>
-                <TabItem x:Name="TabPage6"  Style="{StaticResource TabItemStyle1}">
-                    <TabItem.Header>
-                        <Label Style="{StaticResource btn_fr_style}"></Label>
-                    </TabItem.Header>
-                    <SubForm:FrequencyReproducibilityForm></SubForm:FrequencyReproducibilityForm>
-                </TabItem>
-                <TabItem x:Name="TabPage7" Style="{StaticResource TabItemStyle1}">
-                    <TabItem.Header>
-                        <Label Style="{StaticResource btn_dr_style}"></Label>
-                    </TabItem.Header>
-                    <SubForm:DriftRateForm></SubForm:DriftRateForm>
-                </TabItem>
-                <TabItem x:Name="TabPage8" Style="{StaticResource TabItemStyle1}">
-                    <TabItem.Header>
-                        <Label Style="{StaticResource btn_ar_style}"></Label>
-                    </TabItem.Header>
-                    <SubForm:BurnInRateForm></SubForm:BurnInRateForm>
-                </TabItem>
-                <TabItem x:Name="TabPage9" Style="{StaticResource TabItemStyle1}">
-                    <TabItem.Header>
-                        <Label Style="{StaticResource btn_i_style}"></Label>
-                    </TabItem.Header>
-                    <SubForm:IntervalForm></SubForm:IntervalForm>
-                </TabItem>
-            </TabControl>
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:blankWindow="http://GFramework.org" 
+        WindowStyle="None" BorderThickness="0" 
+        mc:Ignorable="d" Height="800" Width="1000" BorderBrush="Transparent" Padding="0" Background="Gray" Margin="0">
+    <Border Style="{StaticResource SFBorderStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="Transparent" blankWindow:BlankWindow.Draggable="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="15"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="Skins/Image/logo.ico" Margin="10,5,0,5" Grid.Column="0" blankWindow:BlankWindow.Draggable="True"/>
+                <TextBlock Style="{StaticResource mainTitleStyle}" Grid.Column="1" blankWindow:BlankWindow.Draggable="True"></TextBlock>
+                <Grid Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="45"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Name="BtnMinmize" Grid.Column="0" Style="{StaticResource btn_min_style}" Click="BtnMinmize_Click"></Button>
+                    <Button Name="BtnMaxmize" Grid.Column="1" Style="{StaticResource btn_max_style}" Click="BtnMaxmize_Click"></Button>
+                    <Button Name="BtnClose" Grid.Column="2" Style="{StaticResource btn_close_style}" Click="BtnClose_Click"></Button>
+                </Grid>
+            </Grid>
+            <Border Style="{StaticResource SFBorderStyle}" Grid.Row="1" Margin="5">
+                <Grid Background="#848484">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ToolBar x:Name="toolBar" Grid.Row="0" HorizontalAlignment="Left" Background="Transparent" VerticalAlignment="Top" Loaded="toolBar_Loaded">
+                        <Button x:Name="BtnOpen" Style="{StaticResource menu_open_style}" />
+                        <Button x:Name="BtnSave" Style="{StaticResource menu_save_style}" />
+                        <Button x:Name="BtnSaveAs" Style="{StaticResource menu_save_as_style}" />
+                        <Button x:Name="BtnExport" Style="{StaticResource menu_export_style}" Click="BtnExport_Click" />
+                    </ToolBar>
+                    <Border Style="{StaticResource SFBorderStyle}" Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="350"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                            </Grid>
+                            <TabControl Grid.Column="0" Grid.ColumnSpan="2" SelectedIndex="{Binding SelectTableIndex}" TabStripPlacement="Left" Background="Transparent">
+                                <TabItem x:Name="TabPage1"  Style="{StaticResource TabItemStyle1}">
+                                    <TabItem.Header>
+                                        <Grid >
+                                            <Image  Source="Skins/Image/Label_base.png"/>
+                                            <Label Style="{StaticResource btn_fc_style}"></Label>
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <SubForm:FrequencyCountForm  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ></SubForm:FrequencyCountForm>
+                                </TabItem>
+                                <TabItem x:Name="TabPage2" Style="{StaticResource TabItemStyle1}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <Image  Source="Skins/Image/Label_base.png"/>
+                                            <Label Style="{StaticResource btn_bf_style}"></Label>
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <SubForm:BootFeatureForm></SubForm:BootFeatureForm>
+                                </TabItem>
+                                <TabItem x:Name="TabPage3" Style="{StaticResource TabItemStyle1}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <Image  Source="Skins/Image/Label_base.png"/>
+                                            <Label Style="{StaticResource btn_pn_style}"></Label>
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <SubForm:PhaseNoiseForm></SubForm:PhaseNoiseForm>
+                                </TabItem>
+                                <TabItem x:Name="TabPage4" Style="{StaticResource TabItemStyle1}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <Image  Source="Skins/Image/Label_base.png"/>
+                                            <Label Style="{StaticResource btn_sis_style}"></Label>
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <SubForm:ShortTermStabilityFrom></SubForm:ShortTermStabilityFrom>
+                                </TabItem>
+                                <TabItem x:Name="TabPage5" Style="{StaticResource TabItemStyle1}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <Image  Source="Skins/Image/Label_base.png"/>
+                                            <Label Style="{StaticResource btn_fa_style}"></Label>
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <SubForm:FrequencyAccuracyFrom></SubForm:FrequencyAccuracyFrom>
+                                </TabItem>
+                                <TabItem x:Name="TabPage6"  Style="{StaticResource TabItemStyle1}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <Image  Source="Skins/Image/Label_base.png"/>
+                                            <Label Style="{StaticResource btn_fr_style}"></Label>
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <SubForm:FrequencyReproducibilityForm></SubForm:FrequencyReproducibilityForm>
+                                </TabItem>
+                                <TabItem x:Name="TabPage7" Style="{StaticResource TabItemStyle1}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <Image  Source="Skins/Image/Label_base.png"/>
+                                            <Label Style="{StaticResource btn_dr_style}"></Label>
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <SubForm:DriftRateForm></SubForm:DriftRateForm>
+                                </TabItem>
+                                <TabItem x:Name="TabPage8" Style="{StaticResource TabItemStyle1}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <Image  Source="Skins/Image/Label_base.png"/>
+                                            <Label Style="{StaticResource btn_ar_style}"></Label>
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <SubForm:BurnInRateForm></SubForm:BurnInRateForm>
+                                </TabItem>
+                                <TabItem x:Name="TabPage9" Style="{StaticResource TabItemStyle1}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <Image  Source="Skins/Image/Label_base.png"/>
+                                            <Label Style="{StaticResource btn_i_style}"></Label>
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <SubForm:IntervalForm></SubForm:IntervalForm>
+                                </TabItem>
+                            </TabControl>
+                        </Grid>
+                    </Border>
+
+                </Grid>
+            </Border>
+            
         </Grid>
         
-    </Grid>
-</Window>
+    </Border>
+
+</blankWindow:BlankWindow>

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeFrequencyMeasurementSystem.Data;
+using TimeFrequencyMeasurementSystem.Functions;
 using TimeFrequencyMeasurementSystem.Structs;
 
 namespace TimeFrequencyMeasurementSystem.Forms.Wizard
@@ -38,32 +39,45 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             }
         }
 
-        private MeasurementShortTermStability selectedItem;
-        public MeasurementShortTermStability SelectedItem
+        private ObservableCollection<MeasurementShortTermStability> lstSelectedShortTermStability;
+        public ObservableCollection<MeasurementShortTermStability> LstSelectedShortTermStability
         {
             get
             {
-                return selectedItem;
+                return lstSelectedShortTermStability;
             }
             set
             {
-                selectedItem = value;
-                TxtSelectedItem = string.Format("{0}, {1}, {2}", selectedItem.Now, selectedItem.Tau, selectedItem.Sigma);
+                lstSelectedShortTermStability = value;
+                Changed("LstSelectedShortTermStability");
+            }
+        }
+
+        private MeasurementShortTermStability selectedAddItem;
+        public MeasurementShortTermStability SelectedAddItem
+        {
+            get
+            {
+                return selectedAddItem;
+            }
+            set
+            {
+                selectedAddItem = value;
                 Changed("SelectedItem");
             }
         }
 
-        private string txtSelectedItem;
-        public string TxtSelectedItem
+        private MeasurementShortTermStability selectedRemoveItem;
+        public MeasurementShortTermStability SelectedRemoveItem
         {
             get
             {
-                return txtSelectedItem;
+                return selectedRemoveItem;
             }
             set
             {
-                txtSelectedItem = value;
-                Changed("TxtSelectedItem");
+                selectedRemoveItem = value;
+                Changed("SelectedItem");
             }
         }
 
@@ -75,10 +89,27 @@ namespace TimeFrequencyMeasurementSystem.Forms.Wizard
             }
         }
 
+        public ICommand Add { get; private set; }
+        public ICommand Remove { get; private set; }
+
         public ControlShortTermStability()
         {
             InitializeComponent();
+            lstSelectedShortTermStability = new ObservableCollection<MeasurementShortTermStability>();
             this.DataContext = this;
+            Add = new RelayCommand(AddItem);
+            Remove = new RelayCommand(RemoveItem);
+        }
+
+        private void AddItem(object obj)
+        {
+            if (SelectedAddItem != null && !lstSelectedShortTermStability.Contains(SelectedAddItem))
+                lstSelectedShortTermStability.Add(SelectedAddItem);
+        }
+
+        private void RemoveItem(object obj)
+        {
+            lstSelectedShortTermStability.Remove(SelectedRemoveItem);
         }
     }
 }

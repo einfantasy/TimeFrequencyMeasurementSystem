@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/gframework.blankwindow.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/numericupdowncontrol.dll")]
 
 

@@ -5,47 +5,53 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TimeFrequencyMeasurementSystem.Forms.SubForm"
              mc:Ignorable="d" >
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <GroupBox Grid.Column="0" Header="测试方法">
-            <TextBox Text="测试方法&#xA;1、输入铷频标开机一段时间时的频率 &#xA;2、输入达到稳定时的频率" TextWrapping="Wrap" 
-                                 HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
-        </GroupBox>
-        <GroupBox Grid.Column="1" Header="测试数据记录">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="50" />
-                </Grid.RowDefinitions>
-                <DataGrid Name="dataGridBootFeature" Grid.Row="0" ItemsSource="{Binding LstBootFeature}" AutoGenerateColumns="False">
-                    <DataGrid.ContextMenu>
-                        <ContextMenu Name="dgMenuBootFeature" StaysOpen="true">
-                            <MenuItem Name="ItmBootFeatureRemove" Header="删除" Click="ItmBootFeatureRemove_Click"/>
-                        </ContextMenu>
-                    </DataGrid.ContextMenu>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="记录时间" Width="*" Binding="{Binding Now, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="开机频率fta" Width="*" Binding="{Binding FrequencyBoot, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="稳定频率ftw" Width="*" Binding="{Binding FrequencyStable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="标称频率f0" Width="*" Binding="{Binding FrequencyStandard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="开机特性V" Width="*" Binding="{Binding BootFeature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="100" />
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="BtnRunApp2" Grid.Column="1" Content="运行测试程序" Width="80" Height="30" 
-                                        HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,10,10" />
-                    <Button x:Name="BtnAddRecord2" Grid.Column="2" Content="添加测试记录" Width="80" Height="30" 
-                                        HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,10,10" Click="BtnAddRecord2_Click"/>
-                </Grid>
-            </Grid>
-        </GroupBox>
-    </Grid>
+    <Border Style="{StaticResource SFBorderStyle}">
+        <Grid Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+            <GroupBox Grid.Column="1" Header="测试方法"  Style="{StaticResource SFGPStyle}">
+                <Border Style="{StaticResource SFBorderStyle}">
+                    <Grid>
+                        <TextBox Text="测试方法&#xA;1、输入铷频标开机一段时间时的频率 &#xA;2、输入达到稳定时的频率" Style="{StaticResource SFTBoxStyle}"/>
+                    </Grid>
+                </Border>
+            </GroupBox>
+            <GroupBox Grid.Column="0" Header="测试数据记录"  Style="{StaticResource SFGPStyle}">
+                <Border Style="{StaticResource SFBorderStyle}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <DataGrid Name="dataGridBootFeature" Grid.Row="0" ItemsSource="{Binding LstBootFeature}" AutoGenerateColumns="False" Style="{StaticResource SFDGStyle}">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu Name="dgMenuBootFeature" StaysOpen="true">
+                                    <MenuItem Name="ItmBootFeatureRemove" Header="删除" Click="ItmBootFeatureRemove_Click"/>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="记录时间" Width="*" Binding="{Binding Now, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="开机频率fta" Width="*" Binding="{Binding FrequencyBoot, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="稳定频率ftw" Width="*" Binding="{Binding FrequencyStable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="标称频率f0" Width="*" Binding="{Binding FrequencyStandard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="开机特性V" Width="*" Binding="{Binding BootFeature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="BtnRunApp2" Grid.Column="1" Style="{StaticResource SFFC_Run_btn_style}" />
+                            <Button x:Name="BtnAddRecord2" Grid.Column="2" Style="{StaticResource SFFC_Add_btn_style}" Click="BtnAddRecord2_Click"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </GroupBox>
+        </Grid>
+    </Border>
+ 
 </UserControl>

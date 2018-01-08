@@ -72,7 +72,7 @@ namespace TimeFrequencyMeasurementSystem.Structs
                     count++;
                 }
 
-                double rate = LeastSquare.LinearResult(index, values)[0] * 2;
+                double rate = Math.Round(LeastSquare.LinearResult(index, values)[0] * 200, 2);
                 BurnInRate = rate.ToString();
                 return rate;
             }

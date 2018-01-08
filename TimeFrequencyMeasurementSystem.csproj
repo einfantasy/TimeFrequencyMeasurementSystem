@@ -35,10 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GFramework.BlankWindow, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\GFramework.BlankWindow.dll</HintPath>
+    </Reference>
     <Reference Include="NumericUpDownControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dll\NumericUpDownControl.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -79,8 +84,8 @@
     <Compile Include="Forms\SubForm\IntervalForm.xaml.cs">
       <DependentUpon>IntervalForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SubForm\ParseNoiseForm.xaml.cs">
-      <DependentUpon>ParseNoiseForm.xaml</DependentUpon>
+    <Compile Include="Forms\SubForm\PhaseNoiseForm.xaml.cs">
+      <DependentUpon>PhaseNoiseForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\SubForm\ShortTermStabilityFrom.xaml.cs">
       <DependentUpon>ShortTermStabilityFrom.xaml</DependentUpon>
@@ -89,7 +94,7 @@
     <Compile Include="Functions\Expressions.cs" />
     <Compile Include="Functions\LeastSquare.cs" />
     <Compile Include="Functions\RelayCommand.cs" />
-    <Compile Include="Skins\SubItemContent.cs" />
+    <Compile Include="Functions\WordHelper.cs" />
     <Compile Include="Structs\MeasurementBase.cs" />
     <Compile Include="Structs\MeasurementBootFeature.cs" />
     <Compile Include="Structs\MeasurementBurnInRate.cs" />
@@ -130,7 +135,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\SubForm\ParseNoiseForm.xaml">
+    <Page Include="Forms\SubForm\PhaseNoiseForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -298,9 +303,13 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Skins\ToolbarSkin.xaml">
+    <Page Include="Skins\SubFormSkin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Skins\ToolbarSkin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +331,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Doc\CertificationTemplate.doc" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -329,17 +339,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ScreenCut\ScreenCut\ScreenCut.csproj">
-      <Project>{5606128f-fd60-4eba-93fa-21435a84a532}</Project>
-      <Name>ScreenCut</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Dll\GFramework.BlankWindow.dll" />
     <Content Include="Dll\NumericUpDownControl.dll" />
-    <Resource Include="Skins\Image\btn_bf.png" />
-    <Resource Include="Skins\Image\btn_fc.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Skins\Image\tbox_tip_background.png" />
+    <Resource Include="Skins\Image\Label_base.png" />
     <Resource Include="Skins\Image\1x\开机特性-01.png" />
     <Resource Include="Skins\Image\1x\开机特性.png" />
     <Resource Include="Skins\Image\1x\日老化率-01.png" />
@@ -365,11 +368,13 @@
     <Resource Include="Skins\Image\btn_add_test.png" />
     <Resource Include="Skins\Image\btn_aging_rate.png" />
     <Resource Include="Skins\Image\btn_back_up.png" />
+    <Resource Include="Skins\Image\btn_bf.png" />
     <Resource Include="Skins\Image\btn_cal_result.png" />
     <Resource Include="Skins\Image\btn_cancel.png" />
     <Resource Include="Skins\Image\btn_close_2.png" />
     <Resource Include="Skins\Image\btn_complete.png" />
     <Resource Include="Skins\Image\btn_drift_rate.png" />
+    <Resource Include="Skins\Image\btn_fc.png" />
     <Resource Include="Skins\Image\btn_frequency_accuracy.png" />
     <Resource Include="Skins\Image\btn_frequency_reactivity.png" />
     <Resource Include="Skins\Image\btn_interval.png" />
@@ -482,7 +487,6 @@
     <Resource Include="Skins\Image\资源 67.png" />
     <Resource Include="Skins\Image\资源 69.png" />
     <Resource Include="Skins\Image\资源 7.png" />
-    <Resource Include="Skins\Image\资源 8.png" />
     <Resource Include="Skins\Image\资源 82.png" />
     <Resource Include="Skins\Image\资源 9.png" />
     <Resource Include="Skins\Image\选择测量数据.png" />
@@ -503,6 +507,45 @@
     <Resource Include="Skins\Image\飘移率内-02.png" />
     <Resource Include="Skins\Image\飘移率内-03.png" />
     <Resource Include="Skins\Image\飘移率界面.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Subs\DataTimePicker\DataTimePicker.csproj">
+      <Project>{e67965a7-6224-4441-9513-d724ff662307}</Project>
+      <Name>DataTimePicker</Name>
+    </ProjectReference>
+    <ProjectReference Include="Subs\ScreenCut\ScreenCut.csproj">
+      <Project>{5606128f-fd60-4eba-93fa-21435a84a532}</Project>
+      <Name>ScreenCut</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
