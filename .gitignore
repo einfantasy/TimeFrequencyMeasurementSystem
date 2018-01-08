@@ -37,3 +37,15 @@ obj/Debug/App.g.i.cs
 bin/Debug/
 >>>>>>> cdcc9974dc848a87556b6959472666e824a16c53
 Subs/ScreenCut/obj/Debug/MaskWindow.g.cs
+.vs/TimeFrequencyMeasurementSystem/v14/.suo.orig
+Forms/SubForm/BootFeatureForm.xaml.orig
+Forms/SubForm/BurnInRateForm.xaml.orig
+Forms/SubForm/DriftRateForm.xaml.orig
+Forms/SubForm/FrequencyAccuracyFrom.xaml.orig
+Forms/SubForm/FrequencyCountForm.xaml.orig
+Forms/SubForm/FrequencyReproducibilityForm.xaml.orig
+Forms/SubForm/IntervalForm.xaml.orig
+Forms/SubForm/PhaseNoiseForm.xaml.orig
+Forms/SubForm/ShortTermStabilityFrom.xaml.orig
+MainWindow.xaml.cs.orig
+MainWindow.xaml.orig
